@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-electric-blue: #00F0FF;
+  --color-neon-cyan: #00F0FF;
+  --color-neon-magenta: #FF2ED1;
+  --color-neon-lime: #C6FF1A;
+}
+
+@layer base {
+  :root {
+    --bg-main: #FFFFFF;
+    --text-main: #0A0A0A;
+    --primary-color: #00F0FF;
+    --accent-magenta: #FF2ED1;
+    --accent-cyan: #00F0FF;
+    --accent-lime: #C6FF1A;
+    color-scheme: light;
+  }
+
+  html.dark, body.dark, .dark {
+    --bg-main: #020204;
+    --text-main: #F5F5F5;
+    --primary-color: #C6FF1A;
+    --card-bg: #050508;
+    --card-border: #141420;
+    color-scheme: dark;
+  }
+
+  html {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-mono-tech {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-stamp {
+    font-family: 'Caveat', cursive;
+  }
+
+  .font-havoc {
+    font-family: 'Havoc', 'Russo One', 'Orbitron', 'Black Ops One', 'Syne', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 140, 160, 0.25);
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.25);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.45);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(90deg, #00F0FF, #FF2ED1, #C6FF1A, #00F0FF);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 7s linear infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 0 20px -5px rgba(0, 240, 255, 0.2);
+  }
+  50% {
+    border-color: rgba(198, 255, 26, 0.5);
+    box-shadow: 0 0 25px -2px rgba(198, 255, 26, 0.25);
+  }
+}
+
+.animate-glow-border {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes floatSlow1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(4deg);
+  }
+}
+
+@keyframes floatSlow2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-22px) rotate(-6deg);
+  }
+}
+
+@keyframes floatSlow3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(5deg);
+  }
+}
+
+.animate-float-1 {
+  animation: floatSlow1 6.5s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: floatSlow2 7.5s ease-in-out infinite 1s;
+}
+
+.animate-float-3 {
+  animation: floatSlow3 8.5s ease-in-out infinite 2s;
+}
+
+
